@@ -45,9 +45,22 @@ public class UserServiceImpl implements UserService{
 		UserEntity entity = new UserEntity(user.getName(), user.getUsername(),
 				user.getEmail(), user.getPassword(), Arrays.asList(new RoleEntity("ROLE_USER")));
 		
-		userRepository.save(entity);
-		
-		return user;
+		 if (entity != null) {
+			userRepository.save(entity);
+			return user;
+		}
+		 
+		return null;
 	}
+
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+	
+	
 	
 }
